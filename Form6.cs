@@ -44,7 +44,7 @@ namespace ReportSystem
             dataGridView8.Columns[5].HeaderText = "VALUE:";
             dataGridView8.Columns[5].ReadOnly = true;
             dataGridView8.Columns[6].HeaderText = "TYPE:";
-            adapter = dbw1.fillDataAdapter(temp.name_db, "select mr.MinValue, mr.Curvalue, MaxValue, mr.Rate, mr.Value, mr.Type from MetrInRep mr where mr.id_rep in (select r.id_rep from report r where r.progName like '" + g_reportName + "')");
+            adapter = dbw1.fillDataAdapter(SqlConnectionParametrs.DataBaseName, "select mr.MinValue, mr.Curvalue, MaxValue, mr.Rate, mr.Value, mr.Type from MetrInRep mr where mr.id_rep in (select r.id_rep from report r where r.progName like '" + g_reportName + "')");
             cmdBuilder = new SqlCommandBuilder(adapter);
             UseWaitCursor = false;
             dataGridView8_Resize(dataGridView8, null);
@@ -54,7 +54,7 @@ namespace ReportSystem
                 if (dataSet21 != null)
                     adapter.Update(dataSet21);
             }
-            catch (Exception ee)
+            catch (Exception)
             {
                 dataSet21 = null;
             }
